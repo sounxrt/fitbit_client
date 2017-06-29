@@ -1,0 +1,19 @@
+/.bundle/
+/.yardoc
+/Gemfile.lock
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+
+# Jetbrains files
+/.idea
+
+# OSX Files
+.DS_Store
+
+# Emacs Files
+\#*\#
+*\~
