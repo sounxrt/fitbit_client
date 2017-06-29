@@ -23,8 +23,8 @@ module FitbitClient
       if enable
         @original_oauth_debug = ENV['OAUTH_DEBUG']
         ENV['OAUTH_DEBUG'] = 'true'
-      else
-        ENV['OAUTH_DEBUG'] = @original_oauth_debug if @original_oauth_debug
+      elsif @original_oauth_debug
+        ENV['OAUTH_DEBUG'] = @original_oauth_debug
       end
     end
 

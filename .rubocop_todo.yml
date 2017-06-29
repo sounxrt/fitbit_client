@@ -12,39 +12,8 @@
 Metrics/LineLength:
   Max: 165
 
-# Offense count: 12
-Style/Documentation:
-  Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
-    - 'lib/fitbit-client.rb'
-    - 'lib/fitbit-client/authorization_grant_flow.rb'
-    - 'lib/fitbit-client/client.rb'
-    - 'lib/fitbit-client/error.rb'
-    - 'lib/fitbit-client/network/request.rb'
-    - 'lib/fitbit-client/resources.rb'
-    - 'lib/fitbit-client/resources/activity.rb'
-    - 'lib/fitbit-client/resources/body_and_weight.rb'
-    - 'lib/fitbit-client/resources/devices.rb'
-    - 'lib/fitbit-client/resources/sleep.rb'
-    - 'lib/fitbit-client/resources/subscription.rb'
-    - 'lib/fitbit-client/util.rb'
-
-# Offense count: 1
-# Configuration parameters: ExpectMatchingDefinition, Regex, IgnoreExecutableScripts, AllowedAcronyms.
-# AllowedAcronyms: CLI, DSL, ACL, API, ASCII, CPU, CSS, DNS, EOF, GUID, HTML, HTTP, HTTPS, ID, IP, JSON, LHS, QPS, RAM, RHS, RPC, SLA, SMTP, SQL, SSH, TCP, TLS, TTL, UDP, UI, UID, UUID, URI, URL, UTF8, VM, XML, XMPP, XSRF, XSS
-Style/FileName:
-  Exclude:
-    - 'lib/fitbit-client.rb'
-
-# Offense count: 1
-Style/IfInsideElse:
-  Exclude:
-    - 'lib/fitbit-client/client.rb'
-
 # Offense count: 8
 Style/OptionalArguments:
   Exclude:
     - 'lib/fitbit-client/resources/activity.rb'
     - 'lib/fitbit-client/resources/sleep.rb'
-    - 'lib/fitbit-client/util.rb'

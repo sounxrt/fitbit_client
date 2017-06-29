@@ -6,7 +6,7 @@ module FitbitClient
       obj.nil? || obj.empty?
     end
 
-    def path_user_version(user_id = nil, version = '1', path)
+    def path_user_version(path: , user_id: nil, version: '1')
       if user_id
         "/#{version}/user/#{user_id}#{path}.json"
       else
