@@ -1,4 +1,4 @@
-$LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
-require "fitbit-client"
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+require 'fitbit-client'
 
-require "minitest/autorun"
+require 'minitest/autorun'

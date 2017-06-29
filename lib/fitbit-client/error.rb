@@ -13,7 +13,7 @@ module FitbitClient
 
     def to_s
       if response
-        "#{@message}, HTTP_STATUS: #{response.status}, HTTP_BODY: #{response.body}, HTTP_URL: #{response.response.env.url.to_s}"
+        "#{@message}, HTTP_STATUS: #{response.status}, HTTP_BODY: #{response.body}, HTTP_URL: #{response.response.env.url}"
       else
         @message.to_s
       end

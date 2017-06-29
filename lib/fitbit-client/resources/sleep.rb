@@ -1,7 +1,6 @@
 module FitbitClient
   module Resources
     module Sleep
-
       # TODO: This endpoint is going to be deprecated, should be replaced
       #
       def sleep_resource_for_time_series(user_id = nil, resource, date, period)

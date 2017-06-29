@@ -8,7 +8,7 @@ module FitbitClient
     end
 
     def get_token(code, redirect_url)
-      oauth2_client.get_token({ grant_type: 'authorization_code', code: code, redirect_uri: redirect_url } )
+      oauth2_client.get_token(grant_type: 'authorization_code', code: code, redirect_uri: redirect_url)
     end
 
     def oauth2_client
@@ -23,7 +23,7 @@ module FitbitClient
     private
 
     def redirect_uri_param(redirect_url)
-      "#{URI.encode_www_form_component(redirect_url)}"
+      URI.encode_www_form_component(redirect_url).to_s
     end
   end
 end

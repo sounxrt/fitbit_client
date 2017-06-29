@@ -1,7 +1,7 @@
 module FitbitClient
   module Util
     def empty_str?(obj)
-      obj == nil || obj.empty?
+      obj.nil? || obj.empty?
     end
 
     def path_user_version(user_id = nil, version = '1', path)

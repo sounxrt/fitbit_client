@@ -1,7 +1,6 @@
 module FitbitClient
   module Resources
     module Activity
-
       # The Get Lifetime Stats endpoint retrieves the user's activity statistics
       # in the format requested using units in the unit system which corresponds
       # to the Accept-Language header provided.

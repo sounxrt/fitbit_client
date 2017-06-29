@@ -30,9 +30,7 @@ module FitbitClient
       oauth2_refresh_token!
     end
 
-    def refresh_token_callback=(callback)
-      @refresh_token_callback = callback
-    end
+    attr_writer :refresh_token_callback
 
     def refresh_token_callback!(oauth2_token)
       @refresh_token_callback.call(oauth2_token) if @refresh_token_callback

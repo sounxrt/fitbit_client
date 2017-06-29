@@ -1,7 +1,6 @@
 module FitbitClient
   module Network
     module Request
-
       def get(path, params = {}, headers = {})
         parse_response(request(:get, path, headers: headers, params: params))
       end
@@ -25,9 +24,7 @@ module FitbitClient
           # Handle refresh token issue automagically
           if expired_token_error?(e.response)
             oauth2_refresh_token!
-            if tried < 2
-              retry
-            end
+            retry if tried < 2
           end
           raise FitbitClient::Error.new('Error during OAuth2 request', e.response)
         end
@@ -40,7 +37,7 @@ module FitbitClient
 
       def expired_token_error?(response)
         json_response = parse_response(response)
-        json_response.dig('errors').dig(0).dig('errorType')== 'expired_token'
+        json_response.dig('errors').dig(0).dig('errorType') == 'expired_token'
       end
 
       def oauth2_refresh_token!
