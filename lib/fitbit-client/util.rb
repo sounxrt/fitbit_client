@@ -14,10 +14,10 @@ module FitbitClient
       end
     end
 
-    def api_date(date)
+    def date_iso(date)
       date.iso8601
     end
 
-    module_function :empty_str?, :api_date, :path_user_version
+    module_function :empty_str?, :date_iso, :path_user_version
   end
 end

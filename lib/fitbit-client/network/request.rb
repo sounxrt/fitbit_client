@@ -3,8 +3,12 @@
 module FitbitClient
   module Network
     module Request
+      def get_json(path, params = {}, headers = {})
+        parse_response(get(path, params, headers))
+      end
+
       def get(path, params = {}, headers = {})
-        parse_response(request(:get, path, headers: headers, params: params))
+        request(:get, path, headers: headers, params: params)
       end
 
       def post(path, headers = {})
@@ -17,10 +21,10 @@ module FitbitClient
 
       private
 
-      def request(http_method, path, opts = {})
+      def request(method, path, opts = {})
         attempt = 0
         begin
-          oauth2_access_token.request(http_method, path, opts)
+          oauth2_access_token.request(method, path, opts)
         rescue OAuth2::Error => e # Handle refresh token issue automagically
           attempt += 1
           if expired_token_error?(e.response)

@@ -4,7 +4,7 @@ module FitbitClient
   module Resources
     module BodyAndWeight
       def weight_logs(date)
-        get(path_user_version(path: "/body/log/weight/date/#{api_date(date)}"))
+        get_json(path_user_version(path: "/body/log/weight/date/#{date_iso(date)}"))
       end
     end
   end
