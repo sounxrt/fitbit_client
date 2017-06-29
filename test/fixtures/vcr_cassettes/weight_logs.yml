@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.fitbit.com/1/user/-/body/log/weight/date/2017-06-29.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Authorization:
+      - Bearer oauth2token123
+  response:
+    status:
+      code: 200
+      message:
+    headers:
+      date:
+      - Thu, 29 Jun 2017 23:44:01 GMT
+      content-type:
+      - application/json;charset=UTF-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - close
+      vary:
+      - Origin,Accept-Encoding
+      cache-control:
+      - no-cache, private
+      content-language:
+      - en
+      fitbit-rate-limit-limit:
+      - '150'
+      fitbit-rate-limit-remaining:
+      - '150'
+      fitbit-rate-limit-reset:
+      - '959'
+      x-frame-options:
+      - SAMEORIGIN
+      server:
+      - cloudflare-nginx
+      cf-ray:
+      - 376cc0590970581f-DFW
+    body:
+      encoding: ASCII-8BIT
+      string: '{"weight":[]}'
+    http_version:
+  recorded_at: Thu, 29 Jun 2017 23:44:01 GMT
+recorded_with: VCR 3.0.3
