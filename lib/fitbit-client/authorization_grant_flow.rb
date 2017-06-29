@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FitbitClient
   class AuthorizationGrantFlow
     attr_reader :client_id, :client_secret

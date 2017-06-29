@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FitbitClient
   module Network
     module Request
@@ -16,15 +18,14 @@ module FitbitClient
       private
 
       def request(http_method, path, opts = {})
-        tried = 0
+        attempt = 0
         begin
-          tried += 1
           oauth2_access_token.request(http_method, path, opts)
-        rescue OAuth2::Error => e
-          # Handle refresh token issue automagically
+        rescue OAuth2::Error => e # Handle refresh token issue automagically
+          attempt += 1
           if expired_token_error?(e.response)
             oauth2_refresh_token!
-            retry if tried < 2
+            retry if attempt < 2
           end
           raise FitbitClient::Error.new('Error during OAuth2 request', e.response)
         end

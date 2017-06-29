@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FitbitClient
   module Util
     def empty_str?(obj)

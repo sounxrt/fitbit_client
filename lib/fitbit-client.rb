@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'fitbit-client/version'
 require 'fitbit-client/error'
 require 'fitbit-client/util'
@@ -15,7 +17,7 @@ require 'fitbit-client/resources'
 require 'fitbit-client/client'
 
 module FitbitClient
-  VERSION_PATH = '/1'.freeze
+  VERSION_PATH = '/1'
   OAUTH2_CLIENT_OPTIONS = { site: 'https://api.fitbit.com',
                             token_url: 'https://api.fitbit.com/oauth2/token',
                             authorize_url: 'https://www.fitbit.com/oauth2/authorize',

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'oauth2'
 
 module FitbitClient
@@ -33,7 +35,7 @@ module FitbitClient
     attr_writer :refresh_token_callback
 
     def refresh_token_callback!(oauth2_token)
-      @refresh_token_callback.call(oauth2_token) if @refresh_token_callback
+      @refresh_token_callback&.call(oauth2_token)
     end
   end
 end
