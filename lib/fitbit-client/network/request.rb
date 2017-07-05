@@ -27,6 +27,10 @@ module FitbitClient
         request(:delete, path, headers: headers, params: params)
       end
 
+      def successful_request?(response)
+        response.status == 204 && response.body.empty?
+      end
+
       private
 
       def request(method, path, opts = {})
