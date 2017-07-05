@@ -15,6 +15,12 @@ module FitbitClient
           assert_empty response['weight']
         end
       end
+
+      def test_weight_logs_invalid_token
+        VCR.use_cassette('weight_logs_invalid_token') do
+          assert_raises { client.weight_logs(Date.today) }
+        end
+      end
     end
   end
 end

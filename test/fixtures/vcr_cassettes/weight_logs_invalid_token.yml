@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.fitbit.com/1/user/-/body/log/weight/date/2017-06-29.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Authorization:
+      - Bearer token
+  response:
+    status:
+      code: 401
+      message: 
+    headers:
+      date:
+      - Fri, 30 Jun 2017 00:01:56 GMT
+      content-type:
+      - application/json;charset=utf-8
+      content-length:
+      - '206'
+      connection:
+      - close
+      www-authenticate:
+      - Bearer realm="api.fitbit.com"
+      x-frame-options:
+      - SAMEORIGIN
+      server:
+      - cloudflare-nginx
+      cf-ray:
+      - 376cda9b28eb58cd-DFW
+    body:
+      encoding: UTF-8
+      string: '{"errors":[{"errorType":"invalid_token","message":"Access token invalid:
+        token. Visit https://dev.fitbit.com/docs/oauth2 for more information on the
+        Fitbit Web API authorization process."}],"success":false}'
+    http_version: 
+  recorded_at: Fri, 30 Jun 2017 00:01:57 GMT
+recorded_with: VCR 3.0.3
