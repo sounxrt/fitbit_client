@@ -4,12 +4,10 @@ require 'oauth2'
 
 module FitbitClient
   class Client
-    include FitbitClient::Util
-    include FitbitClient::Network::Request
     include FitbitClient::Resources
 
-    attr_reader :client_id, :client_secret
-    attr_accessor :access_token, :refresh_token
+    attr_writer :refresh_token_callback
+    attr_reader :client_id, :client_secret, :access_token, :refresh_token
 
     def initialize(access_token, refresh_token, options = {})
       @access_token = access_token
@@ -28,12 +26,15 @@ module FitbitClient
       end
     end
 
+    # It refresh the token then the callback will be executed and @refresh_token
+    # instance variable will be updated
     def refresh_token!
       oauth2_refresh_token!
+      @refresh_token = oauth2_access_token.refresh_token
     end
 
-    attr_writer :refresh_token_callback
-
+    # When a new refresh token is received this method will be called with the
+    # OAuth2::AccessToken instance as argument
     def refresh_token_callback!(oauth2_token)
       @refresh_token_callback&.call(oauth2_token)
     end
