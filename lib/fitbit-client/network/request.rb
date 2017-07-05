@@ -11,12 +11,20 @@ module FitbitClient
         request(:get, path, headers: headers, params: params)
       end
 
-      def post(path, headers = {})
-        request(:post, path, headers: headers)
+      def post_json(path, params = {}, headers = {})
+        parse_response(post(path, params, headers))
       end
 
-      def delete(path, headers = {})
-        request(:delete, path, headers: headers)
+      def post(path, params = {}, headers = {})
+        request(:post, path, headers: headers, params: params)
+      end
+
+      def delete_json(path, params = {}, headers = {})
+        parse_response(delete(path, params, headers))
+      end
+
+      def delete(path, params = {}, headers = {})
+        request(:delete, path, headers: headers, params: params)
       end
 
       private
@@ -42,7 +50,7 @@ module FitbitClient
 
       def expired_token_error?(response)
         json_response = parse_response(response)
-        json_response.dig('errors').dig(0).dig('errorType') == 'expired_token'
+        json_response.dig('errors', 0, 'errorType') == 'expired_token'
       end
 
       def oauth2_refresh_token!
