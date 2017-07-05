@@ -3,9 +3,16 @@
 module FitbitClient
   module Resources
     module Sleep
-      # TODO: This endpoint is going to be deprecated, should be replaced
+      # The Get Sleep Time Series endpoint returns time series data in the
+      # specified range for a given resource in the format requested using units
+      # in the unit system that corresponds to the Accept-Language header provided.
       #
-      def sleep_resource_for_time_series(resource, date, period, options = {})
+      # <b>Note:</b> This API has been deprecated with the introduction of version 1.2
+      # of the Sleep APIs described above. Sleep Stages data cannot be retrieved
+      # with this API. If your application requires data consistency while you
+      # transition over to the version 1.2 Sleep APIs, you can get this data
+      # through the version 1 Get Sleep Logs by Date endpoint.
+      def sleep_time_series(resource, date, period, options = {})
         path = "/sleep/#{resource}/date/#{date_iso(date)}/#{period}"
         get_json(path_user_version(path, options))
       end
@@ -77,12 +84,24 @@ module FitbitClient
         get_json(path_user_version('/sleep/list', options), params)
       end
 
-      def log_sleep
+      # The Log Sleep endpoint creates a log entry for a sleep event and
+      # returns a response in the format requested. Keep in mind that it is NOT
+      # possible to create overlapping log entries.
+      #
+      # The dateOfSleep in the response for the sleep log is the date on which
+      # the sleep event ends.
 
+      # It requires read & write access
+      def log_sleep(start_time, duration_milliseconds, date, options = {})
+        params = { 'date' => date_iso(date), 'startTime' => start_time.strftime('%H:%M'), 'duration' => duration_milliseconds }
+        options[:version] = '1.2' unless options.key?(:version)
+        post_json(path_user_version('/sleep'), params)
       end
 
-      def delete_sleep_log
-
+      # The Delete Sleep Log endpoint deletes a user's sleep log entry with the
+      # given ID.
+      def delete_sleep_log(log_id)
+        successful_request?(delete(path_user_version("/sleep/#{log_id}")))
       end
 
       # The Get Sleep Goal endpoint returns a user's current sleep goal using
@@ -92,10 +111,13 @@ module FitbitClient
         get_json(path_user_version('/sleep/goal'))
       end
 
-      def update_sleep_goals
-
+      # Creates or updates a user's sleep goal and get a response in the in the
+      # format requested.
+      #
+      # Access Type: Read & Write
+      def update_sleep_goals(minDurationMinutes)
+        post_json(path_user_version('/sleep/goal'), 'minDuration' => minDurationMinutes)
       end
-
     end
   end
 end
