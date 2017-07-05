@@ -6,12 +6,10 @@ module FitbitClient
       obj.nil? || obj.empty?
     end
 
-    def path_user_version(path: , user_id: nil, version: '1')
-      if user_id
-        "/#{version}/user/#{user_id}#{path}.json"
-      else
-        "/#{version}/user/-#{path}.json"
-      end
+    def path_user_version(path, options = {})
+      user_id = options[:user_id] || '-'
+      version = options[:version] || '1'
+      "/#{version}/user/#{user_id}#{path}.json"
     end
 
     def date_iso(date)
