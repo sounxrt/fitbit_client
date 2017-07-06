@@ -26,11 +26,7 @@ module FitbitClient
       #   date   : Date of the measurement
       #   time   : Time of the measurement
       def log_weight(weight, date, time = nil, options = {})
-        params = if time
-                   { 'weight' => weight, 'date' => iso_date(date), 'time' => iso_time_with_seconds(time) }
-                 else
-                   { 'weight' => weight, 'date' => iso_date(date) }
-                 end
+        params = key_value_date_time_params('weight', weight, date, time)
         post_json(path_user_version('/body/log/weight', options), params)
       end
 
@@ -69,11 +65,7 @@ module FitbitClient
       #                 header provided; required if user doesn't have an existing
       #                 weight goal.
       def update_body_weight_goal(start_date, start_weight, weight = nil, options = {})
-        params = if weight
-                   { 'startDate' => iso_date(start_date), 'startWeight' => start_weight, 'weight' => weight }
-                 else
-                   { 'startDate' => iso_date(start_date), 'startWeight' => start_weight }
-                 end
+        params = update_body_weight_goal_params(start_date, start_weight, weight)
         post_json(path_user_version('/body/log/weight/goal', options), params)
       end
 
@@ -124,19 +116,29 @@ module FitbitClient
       #   fat  : Body fat; in the format X.XX
       #   date : Log entry date
       #   time : Time of the measurement
-      def log_body_fat(fat, date, time = nil, _options = {})
-        params = if time
-                   { 'fat' => fat, 'date' => iso_date(date), 'time' => iso_time_with_seconds(time) }
-                 else
-                   { 'fat' => fat, 'date' => iso_date(date) }
-                 end
-        post_json(path_user_version('/body/log/fat', options = {}), params)
+      def log_body_fat(fat, date, time = nil, options = {})
+        params = key_value_date_time_params('fat', fat, date, time)
+        post_json(path_user_version('/body/log/fat', options), params)
       end
 
       # The Delete Body Fat Log API deletes a user's body fat log entry with
       # the given ID.
       def delete_body_fat_log(body_fat_log_id, options = {})
         successful_delete?(delete(path_user_version("/body/log/fat/#{body_fat_log_id}", options)))
+      end
+
+      private
+
+      def key_value_date_time_params(key, value, date, time)
+        params = { key => value, 'date' => iso_date(date) }
+        params['time'] = iso_time_with_seconds(time) if time
+        params
+      end
+
+      def update_body_weight_goal_params(start_date, start_weight, weight)
+        params = { 'startDate' => iso_date(start_date), 'startWeight' => start_weight }
+        params['weight'] = weight if weight
+        params
       end
     end
   end
