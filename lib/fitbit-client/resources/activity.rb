@@ -24,7 +24,7 @@ module FitbitClient
       # the Accept-Language header provided.
       #
       def daily_activity_summary(date, options = {})
-        get_json(path_user_version("/activities/date/#{date_iso(date)}", options))
+        get_json(path_user_version("/activities/date/#{iso_date(date)}", options))
       end
 
       # The Get Activity Time Series endpoint returns time series data in
@@ -33,8 +33,8 @@ module FitbitClient
       # the Accept-Language header provided.
       #
       def activity_time_series(resource, date, period_or_end_date, options = {})
-        period = period_or_end_date.is_a?(Date) ? date_iso(period_or_end_date) : period_or_end_date
-        path = "/activities/#{resource}/date/#{date_iso(date)}/#{period}"
+        period = period_or_end_date.is_a?(Date) ? iso_date(period_or_end_date) : period_or_end_date
+        path = "/activities/#{resource}/date/#{iso_date(date)}/#{period}"
         get_json(path_user_version(path, options))
       end
 

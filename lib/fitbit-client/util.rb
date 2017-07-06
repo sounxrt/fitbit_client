@@ -12,10 +12,18 @@ module FitbitClient
       "/#{version}/user/#{user_id}#{path}.json"
     end
 
-    def date_iso(date)
+    def iso_date(date)
       date.iso8601
     end
 
-    module_function :empty_str?, :date_iso, :path_user_version
+    def iso_time(time)
+      time.strftime('%H:%M')
+    end
+
+    def iso_time_with_seconds(time)
+      time.strftime('%H:%M:%S')
+    end
+
+    module_function :empty_str?, :iso_date, :path_user_version
   end
 end

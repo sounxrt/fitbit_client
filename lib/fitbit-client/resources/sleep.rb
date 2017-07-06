@@ -13,7 +13,7 @@ module FitbitClient
       # transition over to the version 1.2 Sleep APIs, you can get this data
       # through the version 1 Get Sleep Logs by Date endpoint.
       def sleep_time_series(resource, date, period, options = {})
-        path = "/sleep/#{resource}/date/#{date_iso(date)}/#{period}"
+        path = "/sleep/#{resource}/date/#{iso_date(date)}/#{period}"
         get_json(path_user_version(path, options))
       end
 
@@ -33,7 +33,7 @@ module FitbitClient
       # This distinction is to simplify graphically distinguishing short wakes
       # from longer wakes, but they are physiologically equivalent.
       def sleep_logs_by_date(date, options = {})
-        path = "/sleep/date/#{date_iso(date)}"
+        path = "/sleep/date/#{iso_date(date)}"
         options[:version]  = '1.2'
         get_json(path_user_version(path, options))
       end
@@ -54,7 +54,7 @@ module FitbitClient
       # This distinction is to simplify graphically distinguishing short wakes
       # from longer wakes, but they are physiologically equivalent.
       def sleep_logs_by_date_range(start_date, end_date, options = {})
-        path = "/sleep/date/#{date_iso(start_date)}/#{date_iso(end_date)}"
+        path = "/sleep/date/#{iso_date(start_date)}/#{iso_date(end_date)}"
         options[:version] = '1.2'
         get_json(path_user_version(path, options))
       end
@@ -76,9 +76,9 @@ module FitbitClient
       def sleep_logs_list(before_date, after_date, sort, limit, options = {})
         raise 'Before date and Atfer date cannot both be specified' if before_date && after_date
         if before_date
-          params = { 'beforeDate' => date_iso(before_date), 'sort' => sort, 'limit' => limit, 'offset' => 0 }
+          params = { 'beforeDate' => iso_date(before_date), 'sort' => sort, 'limit' => limit, 'offset' => 0 }
         elsif after_date
-          params = { 'afterDate' => date_iso(after_date), 'sort' => sort, 'limit' => limit, 'offset' => 0 }
+          params = { 'afterDate' => iso_date(after_date), 'sort' => sort, 'limit' => limit, 'offset' => 0 }
         end
         options[:version] = '1.2'
         get_json(path_user_version('/sleep/list', options), params)
@@ -93,7 +93,7 @@ module FitbitClient
 
       # It requires read & write access
       def log_sleep(start_time, duration_milliseconds, date, options = {})
-        params = { 'date' => date_iso(date), 'startTime' => start_time.strftime('%H:%M'), 'duration' => duration_milliseconds }
+        params = { 'date' => iso_date(date), 'startTime' => start_time.strftime('%H:%M'), 'duration' => duration_milliseconds }
         options[:version] = '1.2' unless options.key?(:version)
         post_json(path_user_version('/sleep'), params)
       end
@@ -101,7 +101,7 @@ module FitbitClient
       # The Delete Sleep Log endpoint deletes a user's sleep log entry with the
       # given ID.
       def delete_sleep_log(log_id)
-        successful_request?(delete(path_user_version("/sleep/#{log_id}")))
+        successful_delete?(delete(path_user_version("/sleep/#{log_id}")))
       end
 
       # The Get Sleep Goal endpoint returns a user's current sleep goal using

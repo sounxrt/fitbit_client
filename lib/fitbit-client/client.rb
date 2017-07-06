@@ -30,6 +30,7 @@ module FitbitClient
     # instance variable will be updated
     def refresh_token!
       oauth2_refresh_token!
+      @access_token = oauth2_access_token.token
       @refresh_token = oauth2_access_token.refresh_token
     end
 

@@ -28,7 +28,7 @@ module FitbitClient
       # returns true when succesfully deleted
       def delete_subscription(activity_type, subscription_id)
         path = path_user_version("#{subscription_path(activity_type)}/#{subscription_id}")
-        successful_request?(delete(path))
+        successful_delete?(delete(path))
       end
 
       # Get a list of a user's subscriptions for your application in the format
