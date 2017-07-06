@@ -34,7 +34,7 @@ module FitbitClient
       # from longer wakes, but they are physiologically equivalent.
       def sleep_logs_by_date(date, options = {})
         path = "/sleep/date/#{iso_date(date)}"
-        options[:version]  = '1.2'
+        options[:version] = '1.2'
         get_json(path_user_version(path, options))
       end
 

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'test_helper'
 
 module FitbitClient
@@ -31,7 +32,7 @@ module FitbitClient
 
       def test_delete_weight_log
         VCR.use_cassette('delete_weight_log') do
-          assert client.delete_weight_log(1499385599000)
+          assert client.delete_weight_log(1_499_385_599_000)
         end
       end
 
@@ -79,7 +80,7 @@ module FitbitClient
 
       def test_delete_body_fat_log
         VCR.use_cassette('delete_body_fat_log') do
-          assert client.delete_body_fat_log(1499385599000)
+          assert client.delete_body_fat_log(1_499_385_599_000)
         end
       end
     end
