@@ -115,8 +115,10 @@ module FitbitClient
       # format requested.
       #
       # Access Type: Read & Write
-      def update_sleep_goals(minDurationMinutes)
-        post_json(path_user_version('/sleep/goal'), 'minDuration' => minDurationMinutes)
+      #
+      #   min_duration_minutes : The target sleep duration is in minutes
+      def update_sleep_goals(min_duration_minutes)
+        post_json(path_user_version('/sleep/goal'), 'minDuration' => min_duration_minutes)
       end
     end
   end
