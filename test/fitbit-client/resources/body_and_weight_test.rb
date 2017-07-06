@@ -3,7 +3,7 @@ require 'test_helper'
 
 module FitbitClient
   module Resources
-    class BodyAndWeightTest < Minitest::Test
+    class BodyAndWeightTest < Minitest::Test # :nodoc:
       def client
         @client ||= FitbitClient::Client.new('token', 'refresh_token', client_id: '1234567', client_secret: 'qwertyuiopoiuytr123456')
       end

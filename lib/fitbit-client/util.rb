@@ -7,11 +7,12 @@ module FitbitClient
     end
 
     def path_user_version(path, options = {})
-      user_id = options[:user_id] || '-'
-      version = options[:version] || '1'
+      user_id = options.fetch(:user_id, '-')
+      version = options.fetch(:version, '1')
       "/#{version}/user/#{user_id}#{path}.json"
     end
 
+    # Convert a Date object to a iso8601 format String (yyyy-MM-dd)
     def iso_date(date)
       date.iso8601
     end
@@ -24,6 +25,6 @@ module FitbitClient
       time.strftime('%H:%M:%S')
     end
 
-    module_function :empty_str?, :iso_date, :path_user_version
+    module_function :empty_str?, :iso_date, :iso_time, :iso_time_with_seconds, :path_user_version
   end
 end

@@ -25,7 +25,7 @@ module FitbitClient
                             auth_scheme: :basic_auth }.freeze
 
   VALID_SCOPES = %w[activity heartrate location nutrition profile settings sleep social weight].freeze
-  VALID_SUBSCRIPTIONS = %i[activities body foods sleep]
+  VALID_SUBSCRIPTIONS = %i[activities body foods sleep].freeze
 
   class << self
     attr_accessor :client_id, :client_secret
