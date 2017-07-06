@@ -51,11 +51,8 @@ module FitbitClient
       end
 
       def subscription_type_whitelist(activity_type)
-        if FitbitClient::VALID_SUBSCRIPTIONS.include?(activity_type.to_sym)
-          activity_type
-        else
-          raise "Invalid activity type requested for subscription, must be one of #{FitbitClient::VALID_SUBSCRIPTIONS}"
-        end
+        return activity_type if FitbitClient::VALID_SUBSCRIPTIONS.include?(activity_type.to_sym)
+        raise "Invalid activity type requested for subscription, must be one of #{FitbitClient::VALID_SUBSCRIPTIONS}"
       end
     end
   end
