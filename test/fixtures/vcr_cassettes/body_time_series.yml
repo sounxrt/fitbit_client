@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.fitbit.com/1/user/-/body/bmi/date/2017-07-06/7d.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Authorization:
+      - Bearer oauth2token123
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      date:
+      - Thu, 06 Jul 2017 19:47:51 GMT
+      content-type:
+      - application/json;charset=UTF-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - close
+      vary:
+      - Origin,Accept-Encoding
+      cache-control:
+      - no-cache, private
+      content-language:
+      - en
+      fitbit-rate-limit-limit:
+      - '150'
+      fitbit-rate-limit-remaining:
+      - '134'
+      fitbit-rate-limit-reset:
+      - '730'
+      x-frame-options:
+      - SAMEORIGIN
+      server:
+      - cloudflare-nginx
+      cf-ray:
+      - 37a51403987b116b-DFW
+    body:
+      encoding: ASCII-8BIT
+      string: '{"body-bmi":[{"dateTime":"2017-06-30","value":"25.619253158569336"},{"dateTime":"2017-07-01","value":"25.62060546875"},{"dateTime":"2017-07-02","value":"25.621959686279297"},{"dateTime":"2017-07-03","value":"25.623310089111328"},{"dateTime":"2017-07-04","value":"25.62466049194336"},{"dateTime":"2017-07-05","value":"25.68956184387207"},{"dateTime":"2017-07-06","value":"25.68956184387207"}]}'
+    http_version: 
+  recorded_at: Thu, 06 Jul 2017 19:47:51 GMT
+recorded_with: VCR 3.0.3

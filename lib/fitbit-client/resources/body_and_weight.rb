@@ -29,7 +29,7 @@ module FitbitClient
         if time
           params = { 'weight' => weight, 'date' => iso_date(date), 'time' => iso_time_with_seconds(time) }
         else
-          params = { 'weight' => weight, date => iso_date(date) }
+          params = { 'weight' => weight, 'date' => iso_date(date) }
         end
         post_json(path_user_version('/body/log/weight', options), params)
       end
@@ -103,6 +103,8 @@ module FitbitClient
       #
       #   date               : base or start date
       #   period_or_end_date : One of 1d, 7d, 1w, 1m or a Date object
+      #
+      # <b>Note:</b> The range should not be longer than 31 days.
       def body_fat_logs(date, period_or_end_date = nil, options = {})
         if period_or_end_date
           end_limit = period_or_end_date.is_a?(Date) ? iso_date(period_or_end_date) : period_or_end_date
@@ -133,9 +135,6 @@ module FitbitClient
 
       # The Delete Body Fat Log API deletes a user's body fat log entry with
       # the given ID.
-      #
-      # <b>Note:</b> A successful request returns a 204 status code with an
-      # empty response body.
       def delete_body_fat_log(body_fat_log_id, options = {})
         successful_delete?(delete(path_user_version("/body/log/fat/#{body_fat_log_id}", options)))
       end
