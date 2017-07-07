@@ -5,10 +5,10 @@ module FitbitClient
   module Resources
     include FitbitClient::Util
     include FitbitClient::Network::Request
-    include Activity
-    include BodyAndWeight
-    include Devices
-    include Sleep
-    include Subscription
+    include FitbitClient::Resources::Activity
+    include FitbitClient::Resources::BodyAndWeight
+    include FitbitClient::Resources::Devices
+    include FitbitClient::Resources::Sleep
+    include FitbitClient::Resources::Subscription
   end
 end
