@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://api.fitbit.com/1/user/-/sleep/15143410812.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Authorization:
+      - Bearer oauth2token123
+  response:
+    status:
+      code: 204
+      message: 
+    headers:
+      date:
+      - Fri, 07 Jul 2017 19:06:43 GMT
+      content-type:
+      - application/json;charset=UTF-8
+      connection:
+      - close
+      vary:
+      - Origin
+      cache-control:
+      - no-cache, private
+      content-language:
+      - en
+      fitbit-rate-limit-limit:
+      - '150'
+      fitbit-rate-limit-remaining:
+      - '150'
+      fitbit-rate-limit-reset:
+      - '3197'
+      x-frame-options:
+      - SAMEORIGIN
+      server:
+      - cloudflare-nginx
+      cf-ray:
+      - 37ad1525dd761fe2-DFW
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 07 Jul 2017 19:06:43 GMT
+recorded_with: VCR 3.0.3

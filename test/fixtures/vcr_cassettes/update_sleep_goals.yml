@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.fitbit.com/1/user/-/sleep/goal.json?minDuration=420
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Authorization:
+      - Bearer oauth2token123
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      date:
+      - Fri, 07 Jul 2017 18:40:05 GMT
+      content-type:
+      - application/json;charset=UTF-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - close
+      vary:
+      - Origin,Accept-Encoding
+      cache-control:
+      - no-cache, private
+      content-language:
+      - en
+      fitbit-rate-limit-limit:
+      - '150'
+      fitbit-rate-limit-remaining:
+      - '150'
+      fitbit-rate-limit-reset:
+      - '1195'
+      x-frame-options:
+      - SAMEORIGIN
+      server:
+      - cloudflare-nginx
+      cf-ray:
+      - 37acee23c946581f-DFW
+    body:
+      encoding: ASCII-8BIT
+      string: '{"goal":{"minDuration":420,"updatedOn":"2017-07-07T18:40:05.743Z"}}'
+    http_version: 
+  recorded_at: Fri, 07 Jul 2017 18:40:05 GMT
+recorded_with: VCR 3.0.3

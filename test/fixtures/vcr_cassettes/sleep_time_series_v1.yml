@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.fitbit.com/1/user/-/sleep/timeInBed/date/2017-07-07/1w.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Authorization:
+      - Bearer oauth2token123
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      date:
+      - Fri, 07 Jul 2017 20:00:18 GMT
+      content-type:
+      - application/json;charset=UTF-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - close
+      vary:
+      - Origin,Accept-Encoding
+      cache-control:
+      - no-cache, private
+      content-language:
+      - en
+      fitbit-rate-limit-limit:
+      - '150'
+      fitbit-rate-limit-remaining:
+      - '150'
+      fitbit-rate-limit-reset:
+      - '3582'
+      x-frame-options:
+      - SAMEORIGIN
+      server:
+      - cloudflare-nginx
+      cf-ray:
+      - 37ad63a0bdd41fac-DFW
+    body:
+      encoding: ASCII-8BIT
+      string: '{"sleep-timeInBed":[{"dateTime":"2017-07-01","value":"0"},{"dateTime":"2017-07-02","value":"0"},{"dateTime":"2017-07-03","value":"0"},{"dateTime":"2017-07-04","value":"0"},{"dateTime":"2017-07-05","value":"0"},{"dateTime":"2017-07-06","value":"486"},{"dateTime":"2017-07-07","value":"0"}]}'
+    http_version: 
+  recorded_at: Fri, 07 Jul 2017 20:00:18 GMT
+recorded_with: VCR 3.0.3

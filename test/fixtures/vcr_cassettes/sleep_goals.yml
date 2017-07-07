@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.fitbit.com/1/user/-/sleep/goal.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Authorization:
+      - Bearer oauth2token123
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      date:
+      - Fri, 07 Jul 2017 17:22:39 GMT
+      content-type:
+      - application/json;charset=UTF-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - close
+      vary:
+      - Origin,Accept-Encoding
+      cache-control:
+      - no-cache, private
+      content-language:
+      - en
+      fitbit-rate-limit-limit:
+      - '150'
+      fitbit-rate-limit-remaining:
+      - '150'
+      fitbit-rate-limit-reset:
+      - '2242'
+      x-frame-options:
+      - SAMEORIGIN
+      server:
+      - cloudflare-nginx
+      cf-ray:
+      - 37ac7cb19a4457ef-DFW
+    body:
+      encoding: ASCII-8BIT
+      string: '{"consistency":{"awakeRestlessPercentage":0.054745089020134564,"flowId":0,"recommendedSleepGoal":180,"typicalDuration":99,"typicalWakeupTime":"00:23"},"goal":{"bedtime":"23:00","minDuration":480,"updatedOn":"2017-07-06T03:49:02.801Z","wakeupTime":"07:30"}}'
+    http_version: 
+  recorded_at: Fri, 07 Jul 2017 17:22:39 GMT
+recorded_with: VCR 3.0.3

@@ -5,10 +5,6 @@ require 'test_helper'
 module FitbitClient
   module Resources
     class BodyAndWeightTest < Minitest::Test # :nodoc:
-      def client
-        @client ||= FitbitClient::Client.new('token', 'refresh_token', client_id: '1234567', client_secret: 'qwertyuiopoiuytr123456')
-      end
-
       def test_weight_logs
         VCR.use_cassette('weight_logs') do
           response = client.weight_logs(Date.parse('2017-06-29'))

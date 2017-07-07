@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.fitbit.com/1.2/user/-/sleep/date/2017-07-01/2017-07-07.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Authorization:
+      - Bearer oauth2token123
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      date:
+      - Fri, 07 Jul 2017 19:37:27 GMT
+      content-type:
+      - application/json;charset=UTF-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - close
+      vary:
+      - Origin,Accept-Encoding
+      cache-control:
+      - no-cache, private
+      content-language:
+      - en
+      fitbit-rate-limit-limit:
+      - '150'
+      fitbit-rate-limit-remaining:
+      - '135'
+      fitbit-rate-limit-reset:
+      - '1353'
+      x-frame-options:
+      - SAMEORIGIN
+      server:
+      - cloudflare-nginx
+      cf-ray:
+      - 37ad422d18fd57f5-DFW
+    body:
+      encoding: ASCII-8BIT
+      string: '{"sleep":[{"dateOfSleep":"2017-07-06","duration":29160000,"efficiency":92,"endTime":"2017-07-06T07:24:30.000","infoCode":0,"levels":{"data":[{"dateTime":"2017-07-05T23:18:00.000","level":"wake","seconds":30},{"dateTime":"2017-07-05T23:18:30.000","level":"light","seconds":330},{"dateTime":"2017-07-05T23:24:00.000","level":"wake","seconds":600},{"dateTime":"2017-07-05T23:34:00.000","level":"light","seconds":3000},{"dateTime":"2017-07-06T00:24:00.000","level":"rem","seconds":300},{"dateTime":"2017-07-06T00:29:00.000","level":"light","seconds":840},{"dateTime":"2017-07-06T00:43:00.000","level":"rem","seconds":330},{"dateTime":"2017-07-06T00:48:30.000","level":"light","seconds":3390},{"dateTime":"2017-07-06T01:45:00.000","level":"deep","seconds":930},{"dateTime":"2017-07-06T02:00:30.000","level":"light","seconds":480},{"dateTime":"2017-07-06T02:08:30.000","level":"deep","seconds":1200},{"dateTime":"2017-07-06T02:28:30.000","level":"light","seconds":2190},{"dateTime":"2017-07-06T03:05:00.000","level":"wake","seconds":270},{"dateTime":"2017-07-06T03:09:30.000","level":"light","seconds":2040},{"dateTime":"2017-07-06T03:43:30.000","level":"deep","seconds":1350},{"dateTime":"2017-07-06T04:06:00.000","level":"light","seconds":420},{"dateTime":"2017-07-06T04:13:00.000","level":"rem","seconds":1080},{"dateTime":"2017-07-06T04:31:00.000","level":"light","seconds":3120},{"dateTime":"2017-07-06T05:23:00.000","level":"deep","seconds":300},{"dateTime":"2017-07-06T05:28:00.000","level":"light","seconds":1170},{"dateTime":"2017-07-06T05:47:30.000","level":"wake","seconds":480},{"dateTime":"2017-07-06T05:55:30.000","level":"light","seconds":1050},{"dateTime":"2017-07-06T06:13:00.000","level":"rem","seconds":390},{"dateTime":"2017-07-06T06:19:30.000","level":"light","seconds":870},{"dateTime":"2017-07-06T06:34:00.000","level":"rem","seconds":420},{"dateTime":"2017-07-06T06:41:00.000","level":"light","seconds":1530},{"dateTime":"2017-07-06T07:06:30.000","level":"wake","seconds":930},{"dateTime":"2017-07-06T07:22:00.000","level":"light","seconds":150}],"shortData":[{"dateTime":"2017-07-05T23:18:00.000","level":"wake","seconds":30},{"dateTime":"2017-07-05T23:38:00.000","level":"wake","seconds":30},{"dateTime":"2017-07-05T23:52:00.000","level":"wake","seconds":30},{"dateTime":"2017-07-05T23:54:00.000","level":"wake","seconds":60},{"dateTime":"2017-07-05T23:59:00.000","level":"wake","seconds":30},{"dateTime":"2017-07-06T00:12:00.000","level":"wake","seconds":30},{"dateTime":"2017-07-06T00:31:00.000","level":"wake","seconds":30},{"dateTime":"2017-07-06T00:52:30.000","level":"wake","seconds":30},{"dateTime":"2017-07-06T00:56:00.000","level":"wake","seconds":90},{"dateTime":"2017-07-06T00:59:00.000","level":"wake","seconds":90},{"dateTime":"2017-07-06T01:15:30.000","level":"wake","seconds":30},{"dateTime":"2017-07-06T01:39:00.000","level":"wake","seconds":120},{"dateTime":"2017-07-06T02:27:30.000","level":"wake","seconds":60},{"dateTime":"2017-07-06T02:43:00.000","level":"wake","seconds":30},{"dateTime":"2017-07-06T02:59:30.000","level":"wake","seconds":120},{"dateTime":"2017-07-06T03:16:30.000","level":"wake","seconds":30},{"dateTime":"2017-07-06T03:22:30.000","level":"wake","seconds":60},{"dateTime":"2017-07-06T03:37:00.000","level":"wake","seconds":30},{"dateTime":"2017-07-06T04:04:30.000","level":"wake","seconds":90},{"dateTime":"2017-07-06T04:33:00.000","level":"wake","seconds":60},{"dateTime":"2017-07-06T04:40:00.000","level":"wake","seconds":30},{"dateTime":"2017-07-06T04:49:30.000","level":"wake","seconds":30},{"dateTime":"2017-07-06T04:58:00.000","level":"wake","seconds":60},{"dateTime":"2017-07-06T05:02:00.000","level":"wake","seconds":60},{"dateTime":"2017-07-06T05:10:00.000","level":"wake","seconds":30},{"dateTime":"2017-07-06T05:13:00.000","level":"wake","seconds":30},{"dateTime":"2017-07-06T06:05:00.000","level":"wake","seconds":180},{"dateTime":"2017-07-06T06:33:00.000","level":"wake","seconds":60},{"dateTime":"2017-07-06T06:40:00.000","level":"wake","seconds":60},{"dateTime":"2017-07-06T06:46:00.000","level":"wake","seconds":120},{"dateTime":"2017-07-06T06:51:00.000","level":"wake","seconds":60},{"dateTime":"2017-07-06T07:00:00.000","level":"wake","seconds":30},{"dateTime":"2017-07-06T07:02:00.000","level":"wake","seconds":60}],"summary":{"deep":{"count":4,"minutes":60,"thirtyDayAvgMinutes":0},"light":{"count":42,"minutes":316,"thirtyDayAvgMinutes":0},"rem":{"count":5,"minutes":41,"thirtyDayAvgMinutes":0},"wake":{"count":37,"minutes":69,"thirtyDayAvgMinutes":0}}},"logId":15149111094,"minutesAfterWakeup":0,"minutesAsleep":417,"minutesAwake":69,"minutesToFallAsleep":0,"startTime":"2017-07-05T23:18:00.000","timeInBed":486,"type":"stages"}]}'
+    http_version: 
+  recorded_at: Fri, 07 Jul 2017 19:37:27 GMT
+recorded_with: VCR 3.0.3
