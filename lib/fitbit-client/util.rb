@@ -7,9 +7,21 @@ module FitbitClient
     end
 
     def path_user_version(path, options = {})
-      user_id = options.fetch(:user_id, '-')
       version = options.fetch(:version, '1')
+      return "/#{version}#{path}.json" if options[:skip_user]
+
+      # Add user id
+      user_id = options.fetch(:user_id, '-')
       "/#{version}/user/#{user_id}#{path}.json"
+    end
+
+    def skip_user_options!(options)
+      options[:skip_user] = true
+      options.delete![:user_id] if options.key?(:user_id)
+    end
+
+    def period_or_date_param(period_or_date)
+      period_or_date.is_a?(Date) ? iso_date(period_or_date) : period_or_date
     end
 
     # Convert a Date object to a iso8601 format String (yyyy-MM-dd)
