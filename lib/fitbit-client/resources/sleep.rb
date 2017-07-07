@@ -7,13 +7,23 @@ module FitbitClient
       # specified range for a given resource in the format requested using units
       # in the unit system that corresponds to the Accept-Language header provided.
       #
-      # <b>Note:</b> This API has been deprecated with the introduction of version 1.2
-      # of the Sleep APIs described above. Sleep Stages data cannot be retrieved
-      # with this API. If your application requires data consistency while you
-      # transition over to the version 1.2 Sleep APIs, you can get this data
-      # through the version 1 Get Sleep Logs by Date endpoint.
-      def sleep_time_series(resource, date, period, options = {})
-        path = "/sleep/#{resource}/date/#{iso_date(date)}/#{period}"
+      # API Version: 1
+      #
+      # <b>Note:</b> This API has been <b>deprecated</b> with the introduction
+      # of version 1.2 of the \Sleep APIs described above. \Sleep Stages data
+      # cannot be retrieved with this API. If your application requires data
+      # consistency while you transition over to the version 1.2 \Sleep APIs,
+      # you can get this data through the version 1 Get Sleep Logs by Date
+      # endpoint.
+      #
+      #   resource           : startTime | timeInBed | minutesAsleep |
+      #                        awakeningsCount | minutesAwake | minutesToFallAsleep
+      #                        minutesAfterWakeup | efficiency
+      #   date               : The start date for a range or end date of the period specified
+      #   period_or_end_date : One of  1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y, max or the end date of the range
+      def sleep_time_series(resource, date, period_or_end_date, options = {})
+        end_limit = period_or_end_date.is_a?(Date) ? iso_date(period_or_end_date) : period_or_end_date
+        path = "/sleep/#{resource}/date/#{iso_date(date)}/#{end_limit}"
         get_json(path_user_version(path, options))
       end
 
@@ -34,7 +44,7 @@ module FitbitClient
       # from longer wakes, but they are physiologically equivalent.
       def sleep_logs_by_date(date, options = {})
         path = "/sleep/date/#{iso_date(date)}"
-        options[:version] = '1.2'
+        options[:version] = '1.2' unless options.key?(:version)
         get_json(path_user_version(path, options))
       end
 
@@ -55,7 +65,7 @@ module FitbitClient
       # from longer wakes, but they are physiologically equivalent.
       def sleep_logs_by_date_range(start_date, end_date, options = {})
         path = "/sleep/date/#{iso_date(start_date)}/#{iso_date(end_date)}"
-        options[:version] = '1.2'
+        options[:version] = '1.2' unless options.key?(:version)
         get_json(path_user_version(path, options))
       end
 
@@ -73,6 +83,11 @@ module FitbitClient
       #
       # This distinction is to simplify graphically distinguishing short wakes
       # from longer wakes, but they are physiologically equivalent.
+      #
+      #   before_date : Either beforeDate or afterDate must be specified.
+      #                 Set sort to desc when using beforeDate.
+      #   after_date  : Either beforeDate or afterDate must be specified.
+      #                 Set sort to asc when using afterDate.
       def sleep_logs_list(before_date, after_date, sort, limit, options = {})
         raise 'Before date and Atfer date cannot both be specified' if before_date && after_date
         if before_date
@@ -80,7 +95,7 @@ module FitbitClient
         elsif after_date
           params = { 'afterDate' => iso_date(after_date), 'sort' => sort, 'limit' => limit, 'offset' => 0 }
         end
-        options[:version] = '1.2'
+        options[:version] = '1.2' unless options.key?(:version)
         get_json(path_user_version('/sleep/list', options), params)
       end
 
