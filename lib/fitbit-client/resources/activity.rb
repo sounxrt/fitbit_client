@@ -12,8 +12,7 @@ module FitbitClient
       #
       # Response contains both statistics from the tracker device and
       # total numbers including tracker data and manual activity log entries
-      # as seen on the Fitbit website dashbundboard.
-      #
+      # as seen on the Fitbit website dashboard.
       def lifetime_stats(options = {})
         get_json(path_user_version('/activities', options))
       end
@@ -22,17 +21,14 @@ module FitbitClient
       # of a user's activities and activity log entries for a given day in the
       # format requested using units in the unit system which corresponds to
       # the Accept-Language header provided.
-      #
       def daily_activity_summary(date, options = {})
         get_json(path_user_version("/activities/date/#{iso_date(date)}", options))
       end
-
 
       # The Get Activity Time Series endpoint returns time series data in
       # the specified range for a given resource in the format requested
       # using units in the unit system that corresponds to
       # the Accept-Language header provided.
-      #
       def activity_time_series(resource, date, period_or_end_date, options = {})
         period = period_or_date_param(period_or_end_date)
         path = "/activities/#{resource}/date/#{iso_date(date)}/#{period}"
@@ -44,7 +40,6 @@ module FitbitClient
       # format requested.
       #
       # If the activity has levels, also get a list of activity level details.
-      #
       def browse_activity_types(options = {})
         skip_user_options!(options)
         get_json(path_user_version('/activities', options))
@@ -68,9 +63,30 @@ module FitbitClient
       # The record retrieved can be used to log the activity via the
       # Log Activity endpoint with the same or adjusted values for distance
       # and duration.
-      #
       def recent_activity_types(options = {})
         get_json(path_user_version('/activities/recent', options))
+      end
+
+      # The Get Favorite Activities endpoint returns a list of a user's
+      # favorite activities.
+      def favorite_activities
+        get_json(path_user_version('/activities/favorite'))
+      end
+
+      # The Add Favorite Activity endpoint adds the activity with the given ID
+      # to user's list of favorite activities.
+      #
+      #   activity_id : The ID of the activity to add to user's favorites.
+      def add_favorite_activity(activity_id)
+        successful_post?(post(path_user_version("/activities/favorite/#{activity_id}")))
+      end
+
+      # The Delete Favorite Activity removes the activity with the given ID
+      # from a user's list of favorite activities.
+      #
+      #   activity_id : The ID of the activity to be removed.
+      def delete_favorite_activity(activity_id)
+        successful_delete?(delete(path_user_version("/activities/favorite/#{activity_id}")))
       end
     end
   end
