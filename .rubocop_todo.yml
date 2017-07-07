@@ -11,9 +11,3 @@
 # URISchemes: http, https
 Metrics/LineLength:
   Max: 165
-
-# Offense count: 8
-Style/OptionalArguments:
-  Exclude:
-    - 'lib/fitbit-client/resources/activity.rb'
-    - 'lib/fitbit-client/resources/sleep.rb'
