@@ -99,7 +99,7 @@ module FitbitClient
       # <b>Note:</b> The range should not be longer than 31 days.
       def body_fat_logs(date, period_or_end_date = nil, options = {})
         if period_or_end_date
-          end_limit = period_or_end_date.is_a?(Date) ? iso_date(period_or_end_date) : period_or_end_date
+          end_limit = period_or_date_param(period_or_end_date)
           path = "/body/log/fat/date/#{iso_date(date)}/#{end_limit}"
         else
           path = "/body/log/fat/date/#{iso_date(date)}"

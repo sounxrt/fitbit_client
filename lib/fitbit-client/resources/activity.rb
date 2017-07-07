@@ -27,13 +27,14 @@ module FitbitClient
         get_json(path_user_version("/activities/date/#{iso_date(date)}", options))
       end
 
+
       # The Get Activity Time Series endpoint returns time series data in
       # the specified range for a given resource in the format requested
       # using units in the unit system that corresponds to
       # the Accept-Language header provided.
       #
       def activity_time_series(resource, date, period_or_end_date, options = {})
-        period = period_or_end_date.is_a?(Date) ? iso_date(period_or_end_date) : period_or_end_date
+        period = period_or_date_param(period_or_end_date)
         path = "/activities/#{resource}/date/#{iso_date(date)}/#{period}"
         get_json(path_user_version(path, options))
       end
@@ -45,7 +46,31 @@ module FitbitClient
       # If the activity has levels, also get a list of activity level details.
       #
       def browse_activity_types(options = {})
+        skip_user_options!(options)
         get_json(path_user_version('/activities', options))
+      end
+
+      # Returns the details of a specific activity in the Fitbit activities
+      # database in the format requested. If activity has levels, also returns
+      # a list of activity level details.
+      #
+      #   activity_id : The activity id
+      def activity_type(activity_id, options = {})
+        skip_user_options!(options)
+        get_json(path_user_version("/activities/#{activity_id}", options))
+      end
+
+      # The Get Recent Activity Types endpoint retrieves a list of a user's
+      # recent activities types logged with some details of the last activity
+      # log of that type using units in the unit system which corresponds to
+      # the Accept-Language header provided.
+      #
+      # The record retrieved can be used to log the activity via the
+      # Log Activity endpoint with the same or adjusted values for distance
+      # and duration.
+      #
+      def recent_activity_types(options = {})
+        get_json(path_user_version('/activities/recent', options))
       end
     end
   end
