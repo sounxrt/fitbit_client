@@ -24,11 +24,12 @@ Or install it yourself as:
 
 ## Usage
 
-To create an instance of the Client 
+To create an instance of the Client
 ```
-client = FitbitClient::Client.new('an_access_token', 'an_refresh_token', { client_id: 'fitbit_app_client_id', client_secret: 'fitbit_app_client_secret' })
+client = FitbitClient::Client.new(access_token, refresh_token, { client_id: 'fitbit_app_client_id', client_secret: 'fitbit_app_client_secret' })
 ```
 
+**Note:** `access_token` and `refresh_token` must come from a valid OAuth2 session. 
 
 ### Rails
 

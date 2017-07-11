@@ -44,7 +44,7 @@ module FitbitClient
       # from longer wakes, but they are physiologically equivalent.
       def sleep_logs_by_date(date, options = {})
         path = "/sleep/date/#{iso_date(date)}"
-        options[:version] = '1.2' unless options.key?(:version)
+        sleep_default_version!(options)
         get_json(path_user_version(path, options))
       end
 
@@ -65,7 +65,7 @@ module FitbitClient
       # from longer wakes, but they are physiologically equivalent.
       def sleep_logs_by_date_range(start_date, end_date, options = {})
         path = "/sleep/date/#{iso_date(start_date)}/#{iso_date(end_date)}"
-        options[:version] = '1.2' unless options.key?(:version)
+        sleep_default_version!(options)
         get_json(path_user_version(path, options))
       end
 
@@ -95,7 +95,7 @@ module FitbitClient
         elsif after_date
           params = { 'afterDate' => iso_date(after_date), 'sort' => sort, 'limit' => limit, 'offset' => 0 }
         end
-        options[:version] = '1.2' unless options.key?(:version)
+        sleep_default_version!(options)
         get_json(path_user_version('/sleep/list', options), params)
       end
 
@@ -109,7 +109,7 @@ module FitbitClient
       # It requires read & write access
       def log_sleep(start_time, duration_milliseconds, date, options = {})
         params = { 'date' => iso_date(date), 'startTime' => start_time.strftime('%H:%M'), 'duration' => duration_milliseconds }
-        options[:version] = '1.2' unless options.key?(:version)
+        sleep_default_version!(options)
         post_json(path_user_version('/sleep'), params)
       end
 
@@ -134,6 +134,16 @@ module FitbitClient
       #   min_duration_minutes : The target sleep duration is in minutes
       def update_sleep_goals(min_duration_minutes)
         post_json(path_user_version('/sleep/goal'), 'minDuration' => min_duration_minutes)
+      end
+
+      private
+
+      def sleep_default_version!(options)
+        if options[:version] == '1'
+          warn '[DEPRECATION] These endpoints are deprecated and support for them may end unexpectedly. If your application does not depend on the sleep as calculated by these endpoints, please use the new v1.2 sleep endpoints.'
+        else
+          options[:version] = '1.2'
+        end
       end
     end
   end

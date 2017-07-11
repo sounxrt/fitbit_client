@@ -39,13 +39,4 @@ module FitbitClient
   def self.configure
     yield self
   end
-
-  def self.array_to_scopes(scopes_array)
-    raise 'You must specify a scope' if scopes_array.nil? || scopes_array.empty?
-    scopes_array.map do |scope|
-      scope = scope.to_s
-      raise 'Invalid scope' unless FitbitClient::VALID_SCOPES.include? scope
-      scope
-    end.join(' ')
-  end
 end
