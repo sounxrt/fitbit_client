@@ -81,7 +81,7 @@ module FitbitClient
       #   date               : The range start date or end date of the period specified
       #   period_or_end_date : One of  1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y, max or the end date of the range
       def body_time_series(resource_path, date, period_or_end_date, options = {})
-        end_limit = period_or_end_date.is_a?(Date) ? iso_date(period_or_end_date) : period_or_end_date
+        end_limit = period_or_date_param(period_or_end_date)
         path = "/body/#{resource_path}/date/#{iso_date(date)}/#{end_limit}"
         get_json(path_user_version(path, options))
       end
