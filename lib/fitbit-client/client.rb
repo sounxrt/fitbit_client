@@ -26,17 +26,16 @@ module FitbitClient
       end
     end
 
-    # It refresh the token then the callback will be executed and @refresh_token
-    # instance variable will be updated
+    # Force a refresh token
     def refresh_token!
       oauth2_refresh_token!
-      @access_token = oauth2_access_token.token
-      @refresh_token = oauth2_access_token.refresh_token
     end
 
     # When a new refresh token is received this method will be called with the
     # OAuth2::AccessToken instance as argument
     def refresh_token_callback!(oauth2_token)
+      @access_token = oauth2_token.token
+      @refresh_token = oauth2_token.refresh_token
       @refresh_token_callback&.call(oauth2_token)
     end
   end
