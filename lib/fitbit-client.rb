@@ -19,6 +19,9 @@ require 'fitbit-client/authorization_grant_flow'
 
 # The authorization grant flow
 module FitbitClient
+  DEFAULT_LANGUAGE = 'en_US'
+  DEFAULT_LOCALE = 'en_US'
+
   OAUTH2_CLIENT_OPTIONS = { site: 'https://api.fitbit.com',
                             token_url: 'https://api.fitbit.com/oauth2/token',
                             authorize_url: 'https://www.fitbit.com/oauth2/authorize',
