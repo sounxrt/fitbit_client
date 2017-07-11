@@ -15,15 +15,6 @@ module FitbitClient
       "/#{version}/user/#{user_id}#{path}.json"
     end
 
-    def skip_user_options!(options)
-      options[:skip_user] = true
-      options.delete![:user_id] if options.key?(:user_id)
-    end
-
-    def period_or_date_param(period_or_date)
-      period_or_date.is_a?(Date) ? iso_date(period_or_date) : period_or_date
-    end
-
     # Convert a Date object to a iso8601 format String (yyyy-MM-dd)
     def iso_date(date)
       date.iso8601

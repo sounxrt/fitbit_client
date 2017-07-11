@@ -5,6 +5,7 @@ module FitbitClient
   module Resources
     include FitbitClient::Util
     include FitbitClient::Network::Request
+    include FitbitClient::Resources::Common
     include FitbitClient::Resources::Activity
     include FitbitClient::Resources::BodyAndWeight
     include FitbitClient::Resources::Devices

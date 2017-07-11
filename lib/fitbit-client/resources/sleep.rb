@@ -23,7 +23,7 @@ module FitbitClient
       #   period_or_end_date : One of  1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y, max or the end date of the range
       def sleep_time_series(resource, date, period_or_end_date, options = {})
         end_limit = period_or_date_param(period_or_end_date)
-        path = "/sleep/#{resource}/date/#{iso_date(date)}/#{end_limit}"
+        path = time_series_path('sleep', resource, date, end_limit)
         get_json(path_user_version(path, options))
       end
 

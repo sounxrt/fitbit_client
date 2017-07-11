@@ -77,12 +77,12 @@ module FitbitClient
       # retrieves only data since the user's join date or the first log entry
       # date for the requested collection.
       #
-      #   resource_path      : Can be "bmi", "fat", or "weight".
+      #   resource           : Can be "bmi", "fat", or "weight".
       #   date               : The range start date or end date of the period specified
       #   period_or_end_date : One of  1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y, max or the end date of the range
-      def body_time_series(resource_path, date, period_or_end_date, options = {})
+      def body_time_series(resource, date, period_or_end_date, options = {})
         end_limit = period_or_date_param(period_or_end_date)
-        path = "/body/#{resource_path}/date/#{iso_date(date)}/#{end_limit}"
+        path = time_series_path('body', resource, date, end_limit)
         get_json(path_user_version(path, options))
       end
 
