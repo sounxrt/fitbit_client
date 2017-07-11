@@ -40,6 +40,7 @@ module FitbitClient
       def request(method, path, opts = {})
         attempt = 0
         begin
+          default_request_headers(opts)
           oauth2_access_token.request(method, path, opts)
         rescue OAuth2::Error => e # Handle refresh token issue automagically
           attempt += 1
@@ -49,6 +50,12 @@ module FitbitClient
           end
           raise FitbitClient::Error.new('Error during OAuth2 request', e.response)
         end
+      end
+
+      def default_request_headers(opts)
+        opts[:headers]['User-Agent'] = "FitbitClient v#{::FitbitClient::VERSION}"
+        opts[:headers]['Accept-Language'] = opts.fetch(:language, ::FitbitClient.default_language)
+        opts[:headers]['Accept-Locale'] = opts.fetch(:locale, ::FitbitClient.default_locale)
       end
 
       def parse_response(response)

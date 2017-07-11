@@ -6,6 +6,7 @@ require 'fitbit-client/util'
 require 'fitbit-client/network/request'
 
 # Resources
+require 'fitbit-client/resources/common'
 require 'fitbit-client/resources/activity'
 require 'fitbit-client/resources/body_and_weight'
 require 'fitbit-client/resources/devices'
@@ -27,8 +28,12 @@ module FitbitClient
   VALID_SCOPES = %w(activity heartrate location nutrition profile settings sleep social weight).freeze
   VALID_SUBSCRIPTIONS = %i(activities body foods sleep).freeze
 
+  @default_locale = 'en_US'
+  @default_language = 'en_US'
+
   class << self
     attr_accessor :client_id, :client_secret
+    attr_accessor :default_language, :default_locale
   end
 
   def self.configure
