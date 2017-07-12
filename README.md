@@ -1,6 +1,6 @@
 # FitbitClient
 
-[![Build Status](https://travis-ci.org/sounxrt/fitbit_client.svg?branch=master)](https://travis-ci.org/sounxrt/fitbit_client) [![Code Climate](https://codeclimate.com/github/sounxrt/fitbit_client/badges/gpa.svg)](https://codeclimate.com/github/sounxrt/fitbit_client)
+[![Build Status](https://travis-ci.org/sounxrt/fitbit_client.svg?branch=master)](https://travis-ci.org/sounxrt/fitbit_client) [![Code Climate](https://codeclimate.com/github/sounxrt/fitbit_client/badges/gpa.svg)](https://codeclimate.com/github/sounxrt/fitbit_client) [![Test Coverage](https://codeclimate.com/github/codeclimate/codeclimate/badges/coverage.svg)](https://codeclimate.com/github/codeclimate/codeclimate/coverage)
 
 Provides access to the Fitbit API using OAuth2
 
