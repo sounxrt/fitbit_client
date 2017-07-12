@@ -17,15 +17,6 @@ module FitbitClient
       raise ArgumentError, 'FitbitClient::Client cannot operate without a client_id and client_secret values' if empty_str?(@client_id) || empty_str?(@client_secret)
     end
 
-    def debug_mode!(enable)
-      if enable
-        @original_oauth_debug = ENV['OAUTH_DEBUG']
-        ENV['OAUTH_DEBUG'] = 'true'
-      elsif @original_oauth_debug
-        ENV['OAUTH_DEBUG'] = @original_oauth_debug
-      end
-    end
-
     # Force a refresh token
     def refresh_token!
       oauth2_refresh_token!

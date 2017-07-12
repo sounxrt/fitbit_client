@@ -44,10 +44,17 @@ module FitbitClient
           oauth2_access_token.request(method, path, opts)
         rescue OAuth2::Error => e # Handle refresh token issue automagically
           attempt += 1
-          if expired_token_error?(e.response)
+          parsed_response = parse_response(e.response)
+          if expired_token_error?(parsed_response)
             oauth2_refresh_token!
             retry if attempt < 2
           end
+
+          # Unrecoverable token error
+          if invalid_refresh_token_error?(parsed_response) || invalid_access_token_error?(parsed_response)
+            raise FitbitClient::TokenError.new('Invalid token', e.response)
+          end
+
           raise FitbitClient::Error.new('Error during OAuth2 request', e.response)
         end
       end
@@ -63,9 +70,22 @@ module FitbitClient
         JSON.parse response.body
       end
 
-      def expired_token_error?(response)
-        json_response = parse_response(response)
-        json_response.dig('errors', 0, 'errorType') == 'expired_token'
+      def expired_token_error?(parsed_response)
+        parsed_response.dig('errors', 0, 'errorType') == 'expired_token'
+      end
+
+      def invalid_access_token_error?(parsed_response)
+        message = parsed_response.dig('errors', 0, 'message')
+        return unless message
+        parsed_response.dig('errors', 0, 'errorType') == 'invalid_token' &&
+          message.start_with?('Access token invalid')
+      end
+
+      def invalid_refresh_token_error?(parsed_response)
+        message = parsed_response.dig('errors', 0, 'message')
+        return unless message
+        parsed_response.dig('errors', 0, 'errorType') == 'invalid_grant' &&
+          message.start_with?('Refresh token invalid')
       end
 
       def oauth2_refresh_token!
