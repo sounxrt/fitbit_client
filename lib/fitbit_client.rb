@@ -2,6 +2,7 @@
 
 require 'fitbit_client/version'
 require 'fitbit_client/error'
+require 'fitbit_client/token_error'
 require 'fitbit_client/util'
 require 'fitbit_client/network/request'
 
@@ -34,6 +35,10 @@ module FitbitClient
   class << self
     attr_accessor :client_id, :client_secret
     attr_accessor :default_language, :default_locale
+
+    def debug_mode!(enable)
+      ENV['OAUTH_DEBUG'] = enable ? 'true' : 'false'
+    end
   end
 
   def self.configure

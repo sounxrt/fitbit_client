@@ -138,11 +138,12 @@ module FitbitClient
 
       private
 
+      # rubocop:disable Metrics/LineLength
       def sleep_default_version!(options)
         if options[:version] == '1'
           warn '[DEPRECATION] These endpoints are deprecated and support for them may end unexpectedly. If your application does not depend on the sleep as calculated by these endpoints, please use the new v1.2 sleep endpoints.'
         else
-          options[:version] = '1.2'
+          options[:version] ||= '1.2'
         end
       end
     end
