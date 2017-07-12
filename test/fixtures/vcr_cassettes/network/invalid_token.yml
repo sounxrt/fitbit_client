@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.fitbit.com/1/user/-/activities.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - FitbitClient v0.1.1
+      Accept-Language:
+      - en_US
+      Accept-Locale:
+      - en_US
+      Authorization:
+      - Bearer token
+  response:
+    status:
+      code: 401
+      message: 
+    headers:
+      date:
+      - Wed, 12 Jul 2017 21:34:30 GMT
+      content-type:
+      - application/json;charset=utf-8
+      content-length:
+      - '206'
+      connection:
+      - close
+      www-authenticate:
+      - Bearer realm="api.fitbit.com"
+      x-frame-options:
+      - SAMEORIGIN
+      server:
+      - cloudflare-nginx
+      cf-ray:
+      - 37d7207f1af52611-DFW
+    body:
+      encoding: UTF-8
+      string: '{"errors":[{"errorType":"invalid_token","message":"Access token invalid:
+        token. Visit https://dev.fitbit.com/docs/oauth2 for more information on the
+        Fitbit Web API authorization process."}],"success":false}'
+    http_version: 
+  recorded_at: Wed, 12 Jul 2017 21:34:30 GMT
+recorded_with: VCR 3.0.3
