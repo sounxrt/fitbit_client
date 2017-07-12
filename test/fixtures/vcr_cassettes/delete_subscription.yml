@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://api.fitbit.com/1/user/-/sleep/apiSubscriptions/114sleep.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - FitbitClient v0.1.0
+      Accept-Language:
+      - en_US
+      Accept-Locale:
+      - en_US
+      Authorization:
+      - Bearer oauth2token123
+  response:
+    status:
+      code: 204
+      message: 
+    headers:
+      date:
+      - Wed, 12 Jul 2017 20:35:59 GMT
+      content-type:
+      - application/json;charset=UTF-8
+      connection:
+      - close
+      vary:
+      - Origin
+      cache-control:
+      - no-cache, private
+      content-language:
+      - en-US
+      fitbit-rate-limit-limit:
+      - '150'
+      fitbit-rate-limit-remaining:
+      - '116'
+      fitbit-rate-limit-reset:
+      - '1441'
+      x-frame-options:
+      - SAMEORIGIN
+      server:
+      - cloudflare-nginx
+      cf-ray:
+      - 37d6cacaae0f5825-DFW
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 12 Jul 2017 20:35:59 GMT
+recorded_with: VCR 3.0.3
