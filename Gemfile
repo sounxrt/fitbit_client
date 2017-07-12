@@ -2,5 +2,5 @@
 
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in fitbit-client.gemspec
+# Specify your gem's dependencies in fitbit_client.gemspec
 gemspec

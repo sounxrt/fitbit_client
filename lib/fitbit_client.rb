@@ -1,22 +1,22 @@
 # frozen_string_literal: true
 
-require 'fitbit-client/version'
-require 'fitbit-client/error'
-require 'fitbit-client/util'
-require 'fitbit-client/network/request'
+require 'fitbit_client/version'
+require 'fitbit_client/error'
+require 'fitbit_client/util'
+require 'fitbit_client/network/request'
 
 # Resources
-require 'fitbit-client/resources/common'
-require 'fitbit-client/resources/activity'
-require 'fitbit-client/resources/body_and_weight'
-require 'fitbit-client/resources/devices'
-require 'fitbit-client/resources/sleep'
-require 'fitbit-client/resources/subscription'
-require 'fitbit-client/resources'
+require 'fitbit_client/resources/common'
+require 'fitbit_client/resources/activity'
+require 'fitbit_client/resources/body_and_weight'
+require 'fitbit_client/resources/devices'
+require 'fitbit_client/resources/sleep'
+require 'fitbit_client/resources/subscription'
+require 'fitbit_client/resources'
 
 # The main client
-require 'fitbit-client/client'
-require 'fitbit-client/authorization_grant_flow'
+require 'fitbit_client/client'
+require 'fitbit_client/authorization_grant_flow'
 
 # The authorization grant flow
 module FitbitClient

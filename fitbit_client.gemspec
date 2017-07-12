@@ -3,16 +3,16 @@
 
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'fitbit-client/version'
+require 'fitbit_client/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'fitbit-client'
+  spec.name          = 'fitbit_client'
   spec.version       = FitbitClient::VERSION
   spec.authors       = ['Michel Ocon']
   spec.email         = ['soun.xrt@gmail.com']
   spec.summary       = 'Connects to Fibit API using OAuth2'
   spec.description   = 'Client library which connects to the Fibit API using OAuth2 protocol.'
-  spec.homepage      = 'https://github.com/sounxrt/fitbit-client'
+  spec.homepage      = 'https://github.com/sounxrt/fitbit_client'
   spec.license       = 'MIT'
 
   spec.files = `git ls-files -z`.split("\x0").reject do |f|

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'fitbit-client'
+require 'fitbit_client'
 require 'minitest/autorun'
 require 'vcr'
 
