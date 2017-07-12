@@ -49,7 +49,7 @@ module FitbitClient
             oauth2_refresh_token!
             retry if attempt < 2
           end
-          check_unrecoverable_token_error(parsed_response, e)
+          check_unrecoverable_token(parsed_response, e)
           raise FitbitClient::Error.new('Error during OAuth2 request', e.response)
         end
       end
@@ -65,9 +65,9 @@ module FitbitClient
         JSON.parse response.body
       end
 
-      def check_unrecoverable_token_error(parsed_response, error)
+      def check_unrecoverable_token(parsed_response, error)
         if invalid_token_error?(parsed_response, 'invalid_grant', 'Refresh token invalid') ||
-            invalid_token_error?(parsed_response, 'invalid_token', 'Access token invalid')
+           invalid_token_error?(parsed_response, 'invalid_token', 'Access token invalid')
           raise FitbitClient::TokenError.new('Invalid token', error.response)
         end
       end
