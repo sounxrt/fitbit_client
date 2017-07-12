@@ -17,3 +17,6 @@
 # Emacs Files
 \#*\#
 *\~
+
+# Gem files
+*.gem
