@@ -79,7 +79,7 @@ module FitbitClient
       def invalid_token_error?(parsed_response, error_type, error_message)
         message = parsed_response.dig('errors', 0, 'message')
         return unless message
-        parsed_response.dig('errors', 0, error_type) == 'invalid_token' &&
+        parsed_response.dig('errors', 0, 'errorType') == error_type &&
           message.start_with?(error_message)
       end
 
