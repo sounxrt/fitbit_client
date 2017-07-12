@@ -1,9 +1,11 @@
 sudo: false
 language: ruby
-env:
-  CODECLIMATE_REPO_TOKEN: 6170cdc1bc1bef8407fc3c8ef3251cbb0b82c69463336f88409c9cf835b0476e
+addons:
+  code_climate:
+    repo_token: 2ec48f0cac9211d2249786883fd446ecf446c9682ffff4de0345609539ff701e
 rvm:
   - 2.4.0
   - 2.3.3
   - 2.3.1
-before_install: gem install bundler -v 1.15.1
+after_success:
+  - bundle exec codeclimate-test-reporter
