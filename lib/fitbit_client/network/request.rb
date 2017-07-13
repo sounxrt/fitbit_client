@@ -87,6 +87,8 @@ module FitbitClient
         @oauth2_access_token = oauth2_access_token.refresh!
         refresh_token_callback!(@oauth2_access_token)
       rescue OAuth2::Error => e
+        parsed_response = parse_response(e.response)
+        check_unrecoverable_token(parsed_response, e)
         raise FitbitClient::Error.new('Error during oauth2_refresh_token! attempt', e.response)
       end
 
