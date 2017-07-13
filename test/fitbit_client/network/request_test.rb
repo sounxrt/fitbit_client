@@ -11,6 +11,12 @@ module FitbitClient
         end
       end
 
+      def test_invalid_refresh_token
+        VCR.use_cassette('network/invalid_refresh_token') do
+          assert_raises(FitbitClient::TokenError) { client.lifetime_stats }
+        end
+      end
+
       def test_successful_post?
         response = OpenStruct.new
         response.status = 201
