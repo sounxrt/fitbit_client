@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.fitbit.com/1/user/-/body/log/fat/date/2017-07-19/7d.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - FitbitClient v0.1.3
+      Accept-Language:
+      - en_US
+      Accept-Locale:
+      - en_US
+      Authorization:
+      - Bearer oauth2token123
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      date:
+      - Wed, 19 Jul 2017 22:26:26 GMT
+      content-type:
+      - application/json;charset=UTF-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - close
+      vary:
+      - Origin,Accept-Encoding
+      cache-control:
+      - no-cache, private
+      content-language:
+      - en-US
+      fitbit-rate-limit-limit:
+      - '150'
+      fitbit-rate-limit-remaining:
+      - '123'
+      fitbit-rate-limit-reset:
+      - '2014'
+      x-frame-options:
+      - SAMEORIGIN
+      server:
+      - cloudflare-nginx
+      cf-ray:
+      - 38111a35ec171fe2-DFW
+    body:
+      encoding: ASCII-8BIT
+      string: '{"fat":[{"date":"2017-07-18","fat":10,"logId":1500422399000,"source":"Web","time":"23:59:59"},{"date":"2017-07-19","fat":20,"logId":1500508799000,"source":"Web","time":"23:59:59"}]}'
+    http_version: 
+  recorded_at: Wed, 19 Jul 2017 22:26:26 GMT
+recorded_with: VCR 3.0.3
