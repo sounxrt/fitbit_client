@@ -11,8 +11,14 @@ module FitbitClient
       #
       # Body weight log entries in response are sorted exactly the same as they
       # are presented on the Fitbit website.
-      def weight_logs(date, _options = {})
-        get_json(path_user_version("/body/log/weight/date/#{iso_date(date)}"))
+      def weight_logs(date, period_or_end_date = nil, options = {})
+        if period_or_end_date
+          end_limit = period_or_date_param(period_or_end_date)
+          path = "/body/log/weight/date/#{iso_date(date)}/#{end_limit}"
+        else
+          path = "/body/log/weight/date/#{iso_date(date)}"
+        end
+        get_json(path_user_version(path, options))
       end
 
       # The Log Weight API creates log entry for a body weight using units in
