@@ -12,12 +12,7 @@ module FitbitClient
       # Body weight log entries in response are sorted exactly the same as they
       # are presented on the Fitbit website.
       def weight_logs(date, period_or_end_date = nil, options = {})
-        if period_or_end_date
-          end_limit = period_or_date_param(period_or_end_date)
-          path = "/body/log/weight/date/#{iso_date(date)}/#{end_limit}"
-        else
-          path = "/body/log/weight/date/#{iso_date(date)}"
-        end
+        path = body_and_weight_path_for_period('weight', date, period_or_end_date)
         get_json(path_user_version(path, options))
       end
 
@@ -104,12 +99,7 @@ module FitbitClient
       #
       # <b>Note:</b> The range should not be longer than 31 days.
       def body_fat_logs(date, period_or_end_date = nil, options = {})
-        if period_or_end_date
-          end_limit = period_or_date_param(period_or_end_date)
-          path = "/body/log/fat/date/#{iso_date(date)}/#{end_limit}"
-        else
-          path = "/body/log/fat/date/#{iso_date(date)}"
-        end
+        path = body_and_weight_path_for_period('fat', date, period_or_end_date)
         get_json(path_user_version(path, options))
       end
 
@@ -145,6 +135,15 @@ module FitbitClient
         params = { 'startDate' => iso_date(start_date), 'startWeight' => start_weight }
         params['weight'] = weight if weight
         params
+      end
+
+      def body_and_weight_path_for_period(type, date, period_or_end_date)
+        if period_or_end_date
+          end_limit = period_or_date_param(period_or_end_date)
+          "/body/log/#{type}/date/#{iso_date(date)}/#{end_limit}"
+        else
+          "/body/log/#{type}/date/#{iso_date(date)}"
+        end
       end
     end
   end
