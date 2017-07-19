@@ -11,6 +11,15 @@ module FitbitClient
           refute_nil response['weight']
           assert_empty response['weight']
         end
+
+        VCR.use_cassette('weigh_logs_period_7d') do
+          response = client.weight_logs(Date.parse('2017-07-19'), '7d')
+          assert_equal 2, response['weight'].length
+          assert_equal 141, response['weight'][0]['weight']
+          assert_equal 10, response['weight'][0]['fat']
+          assert_equal 143.3, response['weight'][1]['weight']
+          assert_equal 20, response['weight'][1]['fat']
+        end
       end
 
       def test_weight_logs_invalid_token
@@ -57,6 +66,13 @@ module FitbitClient
         VCR.use_cassette('body_fat_logs') do
           response = client.body_fat_logs(Date.parse('2017-07-04'))
           assert_empty response['fat']
+        end
+
+        VCR.use_cassette('body_fat_logs_period_7d') do
+          response = client.body_fat_logs(Date.parse('2017-07-19'), '7d')
+          assert_equal 2, response['fat'].length
+          assert_equal 10, response['fat'][0]['fat']
+          assert_equal 20, response['fat'][1]['fat']
         end
       end
 
