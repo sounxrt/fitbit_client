@@ -37,7 +37,7 @@ module FitbitClient
     attr_accessor :default_language, :default_locale
 
     def debug_mode!(enable)
-      ENV['OAUTH_DEBUG'] = enable ? 'true' : 'false'
+      ENV['OAUTH_DEBUG'] = enable ? 'true' : nil
     end
   end
 
