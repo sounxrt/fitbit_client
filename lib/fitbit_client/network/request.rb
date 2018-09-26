@@ -62,7 +62,11 @@ module FitbitClient
 
       def parse_response(response)
         return {} if response.nil? || response.body.nil? || response.body.empty?
-        JSON.parse response.body
+        begin
+          JSON.parse response.body
+        rescue JSON::ParserError => e
+          raise FitbitClient::Error.new('JSON::ParserError when parsing response', response)
+        end
       end
 
       def check_unrecoverable_token(parsed_response, error)
