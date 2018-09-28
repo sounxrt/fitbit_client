@@ -65,7 +65,7 @@ module FitbitClient
         if response.status == 200
           JSON.parse response.body
         else
-          raise FitbitClient::Error.new('JSON::ParserError when parsing response', response)
+          raise FitbitClient::Error.new('Fitbit request unsuccessful', response)
         end
       end
 
